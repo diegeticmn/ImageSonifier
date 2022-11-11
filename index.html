@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>REFLECTIONS</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="./style.css" />
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+	<style>
+	body,h1 {font-family: "Raleway", sans-serif}
+	body, html {height: 100%}
+	body {
+		background-image: url('bg.jpg');
+		min-height: 100%;
+		background-position: center;
+		background-size: cover;
+		color: white;
+	}
+</style>
+
+</head>
+<body>
+	<script src="https://unpkg.com/tone"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/heic2any/0.0.3/heic2any.min.js" integrity="sha512-/WKQk6ZoCxDcTEavvdHQJKucCb39gRwV325cm9oDlInehCe6kI71RqYP5hWyQRvzdgqKcZErH5baSs2TRPTRfQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="./index.js"></script>
+	<script src="./music.js"></script>
+	<h1>REFLECTIONS</h1>
+	<form action="#">
+		<input type="button" id="loadFileXml" value="Show Me What You've Made" onclick="document.getElementById('imgfile').click();" />
+		<input type="file" style="display:none;" id="imgfile" name="file" capture="environment" accept="image/*" onchange="convertHeicToJpg(this)"/>
+		<input type="button" id="btnLoad" value="Reveal" onclick="main();" />
+	</form>
+	<canvas id="canvas"></canvas>
+	<div id="palette"></div>
+	<hr />
+	<div id="complementary"></div>
+	<div id="explain"></div>
+	<hr />
+	<input type="button" id="unmute" value="Hear Me" onclick="playMusic(domColor)"/>
+</body>
+
+<footer>
+
+</footer>
+
+</html>
