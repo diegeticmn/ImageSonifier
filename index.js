@@ -378,4 +378,13 @@ const main = () => {
 
 };
 
-main();
+document.addEventListener("DOMContentLoaded", () => {
+
+  document.getElementById("btnLoad").addEventListener("click", () =>
+  {
+    main();
+  });
+
+});
+
+//main();

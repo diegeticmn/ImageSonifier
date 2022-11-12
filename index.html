@@ -22,7 +22,7 @@
 
 </head>
 <body>
-	<script src="https://unpkg.com/tone"></script>
+	<script src="./libraries/tone.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/heic2any/0.0.3/heic2any.min.js" integrity="sha512-/WKQk6ZoCxDcTEavvdHQJKucCb39gRwV325cm9oDlInehCe6kI71RqYP5hWyQRvzdgqKcZErH5baSs2TRPTRfQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="./index.js"></script>
 	<script src="./music.js"></script>
@@ -30,7 +30,7 @@
 	<form action="#">
 		<input type="button" id="loadFileXml" value="Show Me What You've Made" onclick="document.getElementById('imgfile').click();" />
 		<input type="file" style="display:none;" id="imgfile" name="file" capture="environment" accept="image/*" onchange="convertHeicToJpg(this)"/>
-		<input type="button" id="btnLoad" value="Reveal" onclick="main();" />
+		<input type="button" id="btnLoad" value="Reveal"/>
 	</form>
 	<canvas id="canvas"></canvas>
 	<div id="palette"></div>
@@ -38,7 +38,6 @@
 	<div id="complementary"></div>
 	<div id="explain"></div>
 	<hr />
-	<input type="button" id="unmute" value="Hear Me" onclick="playMusic(domColor)"/>
 </body>
 
 <footer>
