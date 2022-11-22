@@ -5,7 +5,6 @@ function playMusic(color) {
 	far = b;
 	var key = chooseKey(r, g);
 	playchords(key, r, g, far);
-	fillData(r, g, far)
 }
 
 // ******* INSTRUMENTS *******
@@ -23,12 +22,6 @@ var lowBump = new Tone.Filter(200, "lowshelf");
 //and compressor before going to the speakers
 var vol = new Tone.Volume(-2);
 Tone.Master.chain(vol, lowBump, masterCompressor);
-
-//These are for measuring distance
-var markalat = 0;
-var markalon = 0;
-var markblat = 0;
-var markblon = 0;
 
   var MIDI_NUM_NAMES = ["C_1", "C#_1", "D_1", "D#_1", "E_1", "F_1", "F#_1", "G_1", "G#_1", "A_1", "A#_1", "B_1",
                   "C0", "C#0", "D0", "D#0", "E0", "F0", "F#0", "G0", "G#0", "A0", "A#0", "B0",

@@ -1,6 +1,5 @@
 function convertHeicToJpg(input)
   {
-      console.log("called");
       var fileName = $(input).val();
       var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
       if((fileNameExt == "heic") || (fileNameExt == "heif")) {
@@ -39,8 +38,8 @@ const buildPalette = (colorsList) => {
   const paletteContainer = document.getElementById("palette");
   const complementaryContainer = document.getElementById("complementary");
   // reset the HTML in case you load various images
-  paletteContainer.innerHTML = "";
-  complementaryContainer.innerHTML = "";
+  //paletteContainer.innerHTML = "";
+  //complementaryContainer.innerHTML = "";
 
   const orderedByColor = orderByLuminance(colorsList);
   const hslColors = convertRGBtoHSL(orderedByColor);
