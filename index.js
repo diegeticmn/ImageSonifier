@@ -4,7 +4,6 @@ function convertHeicToJpg(input)
       var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
       if((fileNameExt == "heic") || (fileNameExt == "heif")) {
           var blob = $(input)[0].files[0]; //ev.target.files[0];
-          console.log("success");
           heic2any({
               blob: blob,
               toType: "image/jpg",
@@ -34,17 +33,16 @@ function convertHeicToJpg(input)
 
    });
 
+
 const buildPalette = (colorsList) => {
   const paletteContainer = document.getElementById("palette");
   const complementaryContainer = document.getElementById("complementary");
-  // reset the HTML in case you load various images
-  //paletteContainer.innerHTML = "";
-  //complementaryContainer.innerHTML = "";
 
   const orderedByColor = orderByLuminance(colorsList);
   const hslColors = convertRGBtoHSL(orderedByColor);
 
   for (let i = 0; i < orderedByColor.length; i++) {
+
     const hexColor = rgbToHex(orderedByColor[i]);
 
     const hexColorComplementary = hslToHex(hslColors[i]);
@@ -110,11 +108,7 @@ const rgbToHex = (pixel) => {
   ).toUpperCase();
 };
 
-/**
- * Convert HSL to Hex
- * this entire formula can be found in stackoverflow, credits to @icl7126 !!!
- * https://stackoverflow.com/a/44134328/17150245
- */
+
 const hslToHex = (hslColor) => {
   const hslColorCopy = { ...hslColor };
   hslColorCopy.l /= 100;
@@ -213,7 +207,7 @@ const buildRgb = (imageData) => {
   const rgbValues = [];
   // note that we are loopin every 4!
   // for every Red, Green, Blue and Alpha
-  for (let i = 0; i < imageData.length; i += 4) {
+  for (let i = 0; i < 50000; i += 4) {
     const rgb = {
       r: imageData[i],
       g: imageData[i + 1],
@@ -221,8 +215,7 @@ const buildRgb = (imageData) => {
     };
 
     rgbValues.push(rgb);
-  }
-
+  };
   return rgbValues;
 };
 
@@ -288,6 +281,7 @@ const findBiggestColorRange = (rgbValues) => {
  * can be found here -> https://en.wikipedia.org/wiki/Median_cut
  */
 const quantization = (rgbValues, depth) => {
+
   const MAX_DEPTH = 1;
 
   // Base case
@@ -359,12 +353,13 @@ const main = () => {
 
       // Convert the image data to RGB values so its much simpler
       const rgbArray = buildRgb(imageData.data);
-
+      console.log("success");
       /**
        * Color quantization
        * A process that reduces the number of colors used in an image
        * while trying to visually maintin the original image as much as possible
        */
+
       const quantColors = quantization(rgbArray, 0);
 
       // Create the HTML structure to show the color palette
@@ -381,9 +376,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("btnLoad").addEventListener("click", () =>
   {
+    btnLoad.style.display = 'none';
     main();
   });
 
 });
-
-//main();

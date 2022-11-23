@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>REFLECTIONS</title>
+	<title>SELF PORTRAIT</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="./style.css" />
@@ -21,12 +21,27 @@
 </style>
 
 </head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q0G74WNENF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q0G74WNENF');
+</script>
 <body>
 	<script src="./libraries/tone.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/heic2any/0.0.3/heic2any.min.js" integrity="sha512-/WKQk6ZoCxDcTEavvdHQJKucCb39gRwV325cm9oDlInehCe6kI71RqYP5hWyQRvzdgqKcZErH5baSs2TRPTRfQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="./index.js"></script>
 	<script src="./music.js"></script>
-	<h1>REFLECTIONS</h1>
+
+	<h1>SELF PORTRAIT</h1>
+	<div id="audioContextSuspended">
+  	<div>
+    	<p>Please turn on your sound to enjoy the full experience. If you have an iPhone, you will have to flip the silent mode toggle as well.</p>
+    	<button id="unmute">Unmute</button>
+  	</div>
+	</div>
 	<form action="#">
 		<input type="button" id="loadFileXml" value="Show Me What You've Made" onclick="document.getElementById('imgfile').click();" />
 		<input type="file" style="display:none;" id="imgfile" name="file" capture accept="image/*" onchange="convertHeicToJpg(this)"/>
@@ -38,6 +53,22 @@
 	<div id="complementary"></div>
 	<div id="explain"></div>
 	<hr />
+	<script>
+	if (Tone.context.state !== "running"){
+		$("#audioContextSuspended").show();
+		document.querySelector('#unmute').addEventListener('click', function() {
+			Tone.context.resume().then(() => {
+				$("#audioContextSuspended").hide();
+				perform();
+			});
+		});
+	}else{
+		perform();
+	}
+
+
+
+	</script>
 </body>
 
 <footer>
